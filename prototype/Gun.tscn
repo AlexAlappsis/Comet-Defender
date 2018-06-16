@@ -1,28 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Gun.gd" type="Script" id=1]
-[ext_resource path="res://Base.gd" type="Script" id=2]
-[ext_resource path="res://Gun_Bottom.png" type="Texture" id=3]
-[ext_resource path="res://Gun_Top.png" type="Texture" id=4]
+[ext_resource path="res://Plasma.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Base.gd" type="Script" id=3]
+[ext_resource path="res://Gun_Bottom.png" type="Texture" id=4]
+[ext_resource path="res://Gun_Top.png" type="Texture" id=5]
 
 [node name="Gun" type="Node2D" index="0"]
 
-position = Vector2( 60, 200 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-shot_scene = null
+shot_scene = ExtResource( 2 )
 gun_base_color = Color( 0.364706, 0.364706, 0.364706, 1 )
+turnRateAnglePerSecond = 50
 
 [node name="Base" type="Node2D" parent="." index="0"]
 
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Bottom" type="Sprite" parent="." index="1"]
 
 self_modulate = Color( 0.367188, 0.367188, 0.367188, 1 )
 position = Vector2( 0, -90 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="Heat_Level" type="Sprite" parent="." index="2"]
@@ -34,14 +35,15 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 self_modulate = Color( 0.364706, 0.364706, 0.364706, 1 )
 position = Vector2( 0, -90 )
-texture = ExtResource( 4 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+z_index = 1
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Reload" type="Timer" parent="." index="4"]
 
-process_mode = 1
-wait_time = 0.1
-one_shot = false
+process_mode = 0
+wait_time = 0.03
+one_shot = true
 autostart = false
 
 [node name="Overheat_Alarm" type="AudioStreamPlayer2D" parent="." index="5"]
@@ -65,6 +67,11 @@ max_distance = 2000.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
+
+[node name="Shot_Spawn" type="Node2D" parent="." index="7"]
+
+position = Vector2( 0, -150 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="Reload" to="." method="on_reload"]
 

@@ -10,18 +10,23 @@ var firing = false
 var shot_loaded = true
 var heat_indicator_level = 0
 var shutdown = false
+var targetAngle = 0
 
 export (PackedScene) var shot_scene
 export (Color) var gun_base_color
+export (float) var turnRateAnglePerSecond = 50
 
 func _ready():
-	firing = true
+	#firing = true
+	pass
 	
-func _process(delta):
+func _physics_process(delta):
 	if firing:
 		firing(delta)
 	else:
 		cooling(delta)
+	if targetAngle != null:
+		turn(delta)
 	
 func firing(delta):
 	if shot_loaded == true:
@@ -55,6 +60,8 @@ func heat_loss(delta):
 		overheat_level = 0
 	if heat_level < 0:
 		heat_level = 0
+	if shutdown and heat_level < 3:
+		restart()
 	update_heat_indicator_level()
 	update_overheat_display()
 	
@@ -94,4 +101,27 @@ func stop_firing():
 	firing = false
 	
 func spawn_shot():
-	pass
+	var newshot = shot_scene.instance()
+	newshot.rotation = rotation
+	newshot.position = $Shot_Spawn.get_global_transform().get_origin()
+	newshot.scale = scale
+	get_parent().add_child(newshot)
+
+func target_angle_set(value):
+	targetAngle = value
+
+func turn(delta):
+	var currentAngle = rotation_degrees	
+	var clockwiseAngleDelta = targetAngle - currentAngle
+	if clockwiseAngleDelta < 0:
+		clockwiseAngleDelta += 360	
+	var counterClockwiseAngleDelta = currentAngle - targetAngle
+	if counterClockwiseAngleDelta < 0:
+		counterClockwiseAngleDelta += 360
+	var turnDelta = clockwiseAngleDelta if clockwiseAngleDelta <= counterClockwiseAngleDelta else counterClockwiseAngleDelta
+	if turnDelta > 0:
+		var turnDirection = 1 if clockwiseAngleDelta <= counterClockwiseAngleDelta else -1
+		var rotationMax = turnRateAnglePerSecond * delta
+		if rotationMax < turnDelta:
+			turnDelta = rotationMax
+		rotation_degrees = currentAngle + (turnDelta * turnDirection)
