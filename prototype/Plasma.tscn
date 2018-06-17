@@ -42,20 +42,18 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[node name="Plasma" type="Area2D" index="0" groups=[
+[node name="Plasma" type="KinematicBody2D" index="0" groups=[
 "Plasma",
 ]]
 
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+input_pickable = false
+collision_layer = 1
+collision_mask = 2
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 speed = 400
+heat = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -84,6 +82,7 @@ blend_times = [  ]
 
 frames = SubResource( 3 )
 animation = "default"
+frame = 4
 playing = true
 
 

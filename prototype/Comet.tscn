@@ -31,6 +31,11 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 color = Color( 0.0166626, 0.678393, 0.710938, 1 )
+plasma_hit_heat_factor = 30.0
+plasma_base_impulse = 100.0
+mass_loss_per_plasma_hit = 20.0
+mass_loss_extra_per_plasma_heat = 5.0
+minimum_mass = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

@@ -3,7 +3,7 @@ extends Node2D
 export (PackedScene) var comet_scene
 
 func _ready():
-	spawn_comet(1000.0, Vector2(300.0, 0.0), Vector2(100, 100))
+	spawn_comet(300.0, Vector2(300.0, 0.0), Vector2(100, 100))
 	pass
 
 func _physics_process(delta):
