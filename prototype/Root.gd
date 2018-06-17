@@ -1,6 +1,9 @@
 extends Node2D
 
+export (PackedScene) var comet_scene
+
 func _ready():
+	spawn_comet(1000.0, Vector2(300.0, 0.0), Vector2(100, 100))
 	pass
 
 func _physics_process(delta):
@@ -24,3 +27,11 @@ func calculateTurretAngle():
 	if target_turret_angle >= 360:
 		target_turret_angle -= 360
 	$Gun.target_angle_set(target_turret_angle)
+
+
+func spawn_comet(mass, positionVector, velocityVector):
+	var new_comet = comet_scene.instance()
+	new_comet.position = positionVector
+	new_comet.update_mass(mass)
+	new_comet.apply_impulse(Vector2(0.0, 0.0), velocityVector)
+	add_child(new_comet)

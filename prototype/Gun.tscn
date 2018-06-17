@@ -70,7 +70,7 @@ area_mask = 1
 
 [node name="Shot_Spawn" type="Node2D" parent="." index="7"]
 
-position = Vector2( 0, -150 )
+position = Vector2( 0, -177 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="Reload" to="." method="on_reload"]
