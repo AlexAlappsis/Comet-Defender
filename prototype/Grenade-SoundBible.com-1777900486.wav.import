@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Grenade-SoundBible.com-1777900486.wav-772853e4b75ef455239b7062acc4bcc7.sample"
+
+[deps]
+
+source_file="res://Grenade-SoundBible.com-1777900486.wav"
+dest_files=[ "res://.import/Grenade-SoundBible.com-1777900486.wav-772853e4b75ef455239b7062acc4bcc7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,7 +1,7 @@
 extends Node2D
 
 var heat_level_max = 6
-var overheat_capacity = 1
+var overheat_capacity = 2
 var overheat_level = 0.0
 var heat_level = 0.0
 var heat_gain_rate = 2
@@ -77,11 +77,14 @@ func update_heat_indicator_level():
 		heat_indicator_level = updated_heat_indicator_level
 		if heat_indicator_level == 0:
 			$Heat_Level.texture = null
+			$Heat_Level_0.play()
 		else:
+			get_node("Heat_Level_"+str(heat_indicator_level)).play()
 			$Heat_Level.texture = load("res://Gun_Heat_"+str(heat_indicator_level)+".png")#should probably do this differently
 		
 func update_overheat_display():
 	if overheat_level > 0:
+		if !$Overheat.playing: $Overheat.play()
 		var minimum_red = gun_base_color.r
 		var maximum_red = 1.0
 		var red = (maximum_red - minimum_red) * overheat_level / overheat_capacity + minimum_red
@@ -91,19 +94,24 @@ func update_overheat_display():
 	else:
 		$Bottom.self_modulate = gun_base_color
 		$Top.self_modulate = gun_base_color
+		$Overheat.stop()
 
 func shutdown():
+	$Shutdown.play()
 	firing = false
 	shutdown = true
 
 func restart():
+	$Startup.play()
 	shutdown = false
 
 func start_firing():
 	if shutdown == false:
+		$Fire.play()
 		firing = true
 	
 func stop_firing():
+	$Fire.stop()
 	firing = false
 	
 func spawn_shot():

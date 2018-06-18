@@ -71,6 +71,7 @@ func update_mass(new_mass):
 	
 
 func hit_by_plasma(point, plasma_heat):	
+	$Plasma_Hit.play()
 	var impulse_vector = (position - point).normalized() * plasma_base_impulse * (plasma_hit_heat_factor * plasma_heat)
 	apply_impulse(point, impulse_vector)
 	#changing mass after impulse because impulse comes from lost mass becoming steam

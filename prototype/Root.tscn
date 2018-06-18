@@ -75,6 +75,7 @@ autostart = true
 
 [node name="Ground" type="Area2D" parent="." index="6"]
 
+editor/display_folded = true
 position = Vector2( 512, 609 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -95,6 +96,7 @@ shape = SubResource( 1 )
 
 [node name="Score_UI" type="Container" parent="." index="7"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -193,6 +195,7 @@ _sections_unfolded = [ "Anchor", "custom_fonts" ]
 [node name="Game_Over_Popup" type="PopupDialog" parent="." index="8"]
 
 pause_mode = 2
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -318,6 +321,7 @@ align = 1
 [node name="Game_Start_Popup" type="PopupDialog" parent="." index="9"]
 
 pause_mode = 2
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -495,7 +499,9 @@ If the cannon is hit by a comet, it will cool down rapidly.  It will not be dama
 
 Credits: 
 	Created by: Alex M (Alappsis)
-	Help by Jeremy A and Scott H"
+	Help by Jeremy A and Scott H
+	Explosion sound: Recorded by Mike Koenig 
+		http://soundbible.com/1151-Grenade.html"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
@@ -516,7 +522,9 @@ If the cannon is hit by a comet, it will cool down rapidly.  It will not be dama
 
 Credits: 
 	Created by: Alex M (Alappsis)
-	Help by Jeremy A and Scott H"
+	Help by Jeremy A and Scott H
+	Explosion sound: Recorded by Mike Koenig 
+		http://soundbible.com/1151-Grenade.html"
 scroll_active = true
 scroll_following = false
 selection_enabled = false
