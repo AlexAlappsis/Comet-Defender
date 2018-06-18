@@ -9,6 +9,7 @@ export (float) var minimum_mass
 export (float) var density_calculation_value
 export (float) var partical_density_per_mass
 export (PackedScene) var comet_trail_scene
+export (PackedScene) var plasma_hit_scene
 export (int) var SCREEN_HEIGHT
 
 var size
@@ -73,6 +74,11 @@ func hit_by_plasma(point, plasma_heat):
 	#changing mass after impulse because impulse comes from lost mass becoming steam
 	var new_mass = mass - (mass_loss_per_plasma_hit) - (mass_loss_extra_per_plasma_heat * plasma_heat)
 	update_mass(new_mass)
+	var plasma_hit_particles = plasma_hit_scene.instance()
+	plasma_hit_particles.amount = plasma_hit_particles.amount * (1 + (plasma_heat / 6))
+	plasma_hit_particles.position = (point - position).rotated(-rotation)
+	add_child(plasma_hit_particles)
+	plasma_hit_particles.emitting = true
 
 func hit_by_gun():
 	explode()
