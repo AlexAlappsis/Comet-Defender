@@ -14,6 +14,7 @@ var comet_minimum_x = -200
 var comet_maximum_x = 200
 var comet_spawn_time_minimum = .8
 var comet_spawn_time_maximum = 1.8
+var comet_spawn_time_reduction_per_thousand_score = .2
 var standing_buildings = 6
 var score_per_second = 5
 var score_multiplier_per_building = .5
@@ -73,7 +74,11 @@ func _on_Spawn_timeout():
 	var target_vector = Vector2(SCREEN_HEIGHT, rand_range(0, SCREEN_WIDTH))
 	var velocity_vector = (target_vector - position_vector).normalized() * rand_range(comet_minimum_starting_velocity, comet_maximum_starting_velocity)
 	spawn_comet(comet_mass, position_vector, velocity_vector)
-	$Spawn.wait_time = rand_range(comet_spawn_time_minimum, comet_spawn_time_maximum)
+	var next_spawn_time = rand_range(comet_spawn_time_minimum, comet_spawn_time_maximum)
+	next_spawn_time -= score / 1000 * comet_spawn_time_reduction_per_thousand_score
+	if next_spawn_time < 0:
+		next_spawn_time = .05
+	$Spawn.wait_time = next_spawn_time	
 	$Spawn.start()
 
 
