@@ -10,6 +10,7 @@ export (float) var density_calculation_value
 export (float) var partical_density_per_mass
 export (PackedScene) var comet_trail_scene
 export (PackedScene) var plasma_hit_scene
+export (PackedScene) var comet_explosion_scene
 export (int) var SCREEN_HEIGHT
 
 var size
@@ -93,5 +94,12 @@ func too_small():
 	explode()
 
 func explode():
-	queue_free()
 	leave_comet_trail()
+	var comet_explosion = comet_explosion_scene.instance()
+	comet_explosion.process_material = comet_explosion.process_material.duplicate(true)
+	comet_explosion.amount = partical_density_per_mass * mass * 20
+	comet_explosion.process_material.emission_sphere_radius = size
+	comet_explosion.position = position
+	get_parent().add_child(comet_explosion)
+	comet_explosion.emitting = true
+	queue_free()
