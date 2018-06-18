@@ -14,6 +14,11 @@ var comet_minimum_x = -200
 var comet_maximum_x = 200
 var comet_spawn_time_minimum = .8
 var comet_spawn_time_maximum = 1.8
+var standing_buildings = 6
+var score_per_second = 5
+var score_multiplier_per_building = .5
+
+var score = 0
 
 
 func _ready():
@@ -23,6 +28,10 @@ func _ready():
 	$Gun.SCREEN_WIDTH = SCREEN_WIDTH
 	comet_maximum_x += SCREEN_WIDTH
 	randomize()
+
+func _process(delta):
+	score += score_per_second * (standing_buildings * score_multiplier_per_building) * delta
+	$Score_UI/HBoxContainer/MarginContainer/Score.text = str(floor(score))
 
 func _physics_process(delta):
 	calculateTurretAngle()
@@ -71,3 +80,12 @@ func _on_Spawn_timeout():
 func _on_Ground_body_entered(body):
 	if body.is_in_group("Comet"):
 		body.hit_by_ground()
+
+
+func _on_City_building_destroyed():
+	standing_buildings -= 1
+	if standing_buildings == 0:
+		game_over()
+		
+func game_over():
+	pass
