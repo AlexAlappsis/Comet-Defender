@@ -13,6 +13,7 @@ _sections_unfolded = [ "Transform" ]
 shot_scene = ExtResource( 2 )
 gun_base_color = Color( 0.364706, 0.364706, 0.364706, 1 )
 turnRateAnglePerSecond = 50
+SCREEN_WIDTH = null
 
 [node name="Base" type="Node2D" parent="." index="0"]
 

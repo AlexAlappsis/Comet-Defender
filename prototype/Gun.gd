@@ -15,6 +15,7 @@ var targetAngle = 0
 export (PackedScene) var shot_scene
 export (Color) var gun_base_color
 export (float) var turnRateAnglePerSecond = 50
+export (int) var SCREEN_WIDTH
 
 func _ready():
 	#firing = true
@@ -105,6 +106,7 @@ func spawn_shot():
 	newshot.rotation = rotation
 	newshot.position = $Shot_Spawn.get_global_transform().get_origin()
 	newshot.scale = scale
+	newshot.SCREEN_WIDTH = SCREEN_WIDTH
 	get_parent().add_child(newshot)
 
 func target_angle_set(value):

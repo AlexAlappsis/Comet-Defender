@@ -6,6 +6,7 @@ export (float) var plasma_base_impulse
 export (float) var mass_loss_per_plasma_hit
 export (float) var mass_loss_extra_per_plasma_heat
 export (float) var minimum_mass
+export (int) var SCREEN_HEIGHT
 
 var size
 var densityCalculationValue = 10
@@ -16,6 +17,10 @@ func _ready():
 	
 func _draw():
 	draw_circle(Vector2(0.0, 0.0), size, color)
+	
+func _physics_process(delta):
+	if position.y > SCREEN_HEIGHT + 200:
+		queue_free()
 
 func update_mass(new_mass):
 	if new_mass < minimum_mass:

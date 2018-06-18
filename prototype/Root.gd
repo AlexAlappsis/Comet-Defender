@@ -2,9 +2,27 @@ extends Node2D
 
 export (PackedScene) var comet_scene
 
+var SCREEN_HEIGHT
+var SCREEN_WIDTH
+var comet_minimum_mass = 150
+var comet_maximum_mass = 1000
+var comet_minimum_height = -50
+var comet_maximum_height = -300
+var comet_minimum_starting_velocity = 20
+var comet_maximum_starting_velocity = 200
+var comet_minimum_x = -200
+var comet_maximum_x = 200
+var comet_spawn_time_minimum = .3
+var comet_spawn_time_maximum = 1
+
+
 func _ready():
-	spawn_comet(300.0, Vector2(300.0, 0.0), Vector2(100, 100))
-	pass
+	#spawn_comet(300.0, Vector2(300.0, 0.0), Vector2(100, 100))
+	SCREEN_WIDTH = get_viewport().size.x
+	SCREEN_HEIGHT = get_viewport().size.y
+	$Gun.SCREEN_WIDTH = SCREEN_WIDTH
+	comet_maximum_x += SCREEN_WIDTH
+	randomize()
 
 func _physics_process(delta):
 	calculateTurretAngle()
@@ -29,9 +47,22 @@ func calculateTurretAngle():
 	$Gun.target_angle_set(target_turret_angle)
 
 
-func spawn_comet(mass, positionVector, velocityVector):
+func spawn_comet(mass, position_vector, velocity_vector):
 	var new_comet = comet_scene.instance()
-	new_comet.position = positionVector
+	new_comet.position = position_vector
 	new_comet.update_mass(mass)
-	new_comet.apply_impulse(Vector2(0.0, 0.0), velocityVector)
+	new_comet.apply_impulse(Vector2(0.0, 0.0), velocity_vector)
+	new_comet.SCREEN_HEIGHT = SCREEN_HEIGHT
 	add_child(new_comet)
+
+
+func _on_Spawn_timeout():
+	var comet_mass = rand_range(comet_minimum_mass, comet_maximum_mass)
+	var comet_x = rand_range(comet_minimum_x, comet_maximum_x)
+	var comet_y = rand_range(comet_minimum_height, comet_maximum_height)
+	var position_vector = Vector2(comet_x, comet_y)
+	var target_vector = Vector2(SCREEN_HEIGHT, rand_range(0, SCREEN_WIDTH))
+	var velocity_vector = (target_vector - position_vector).normalized() * rand_range(comet_minimum_starting_velocity, comet_maximum_starting_velocity)
+	spawn_comet(comet_mass, position_vector, velocity_vector)
+	$Spawn.wait_time = rand_range(comet_spawn_time_minimum, comet_spawn_time_maximum)
+	$Spawn.start()

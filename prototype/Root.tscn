@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Gun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://City.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Node2D" index="0"]
 
@@ -13,5 +14,22 @@ comet_scene = ExtResource( 2 )
 
 position = Vector2( 508.587, 593.474 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="City" parent="." index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 301.385, 555.125 )
+
+[node name="City2" parent="." index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 777.839, 554.017 )
+
+[node name="Spawn" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Spawn" to="." method="_on_Spawn_timeout"]
 
 
