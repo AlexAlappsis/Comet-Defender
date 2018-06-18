@@ -6,10 +6,10 @@ export (float) var plasma_base_impulse
 export (float) var mass_loss_per_plasma_hit
 export (float) var mass_loss_extra_per_plasma_heat
 export (float) var minimum_mass
+export (float) var density_calculation_value
 export (int) var SCREEN_HEIGHT
 
 var size
-var densityCalculationValue = 10
 
 func _draw():
 	draw_circle(Vector2(0.0, 0.0), size, color)
@@ -20,7 +20,7 @@ func _physics_process(delta):
 
 func set_initial_mass(new_mass):
 	mass = new_mass
-	size = mass / densityCalculationValue
+	size = mass / density_calculation_value
 	var shape = CircleShape2D.new()
 	shape.set_radius(size)
 	shape_owner_clear_shapes(0)
@@ -29,10 +29,10 @@ func set_initial_mass(new_mass):
 
 func update_mass(new_mass):
 	if new_mass < minimum_mass:
-		queue_free()
+		too_small()
 	else:
 		mass = new_mass
-		size = mass / densityCalculationValue
+		size = mass / density_calculation_value
 		var shape = shape_owner_get_shape(0, 0)
 		shape.set_radius(size)
 		$CollisionShape2D.shape.radius = size
@@ -53,6 +53,9 @@ func hit_by_ground():
 	explode()
 	
 func hit_by_city():
+	explode()
+
+func too_small():
 	explode()
 
 func explode():
