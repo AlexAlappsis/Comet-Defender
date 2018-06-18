@@ -184,6 +184,12 @@ _sections_unfolded = [ "Anchor", "custom_fonts" ]
 
 [connection signal="building_destroyed" from="City" to="." method="_on_City_building_destroyed"]
 
+[connection signal="building_destroyed" from="City2" to="." method="_on_City_building_destroyed"]
+
+[connection signal="building_destroyed" from="City3" to="." method="_on_City_building_destroyed"]
+
+[connection signal="building_destroyed" from="City4" to="." method="_on_City_building_destroyed"]
+
 [connection signal="timeout" from="Spawn" to="." method="_on_Spawn_timeout"]
 
 [connection signal="body_entered" from="Ground" to="." method="_on_Ground_body_entered"]

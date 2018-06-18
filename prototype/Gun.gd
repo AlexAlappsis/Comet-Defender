@@ -120,6 +120,10 @@ func target_angle_set(value):
 
 func turn(delta):
 	var currentAngle = rotation_degrees	
+	if currentAngle < 0:
+		currentAngle += 360
+	if currentAngle > 360:
+		currentAngle -= 360
 	var clockwiseAngleDelta = targetAngle - currentAngle
 	if clockwiseAngleDelta < 0:
 		clockwiseAngleDelta += 360	
