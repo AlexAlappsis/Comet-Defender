@@ -38,3 +38,15 @@ func hit_by_plasma(point, plasma_heat):
 	#changing mass after impulse because impulse comes from lost mass becoming steam
 	var new_mass = mass - (mass_loss_per_plasma_hit) - (mass_loss_extra_per_plasma_heat * plasma_heat)
 	update_mass(new_mass)
+
+func hit_by_gun():
+	explode()
+	
+func hit_by_ground():
+	explode()
+	
+func hit_by_city():
+	explode()
+
+func explode():
+	queue_free()

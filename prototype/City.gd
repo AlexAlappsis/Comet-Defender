@@ -9,3 +9,4 @@ func _on_City_body_shape_entered(body_id, body, body_shape, area_shape):
 		shape_owner_set_disabled(owner_id, true)
 		get_child(area_shape).hide()
 		emit_signal("building_destroyed")
+		body.hit_by_city()

@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Gun.gd" type="Script" id=1]
 [ext_resource path="res://Plasma.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Base.gd" type="Script" id=3]
 [ext_resource path="res://Gun_Bottom.png" type="Texture" id=4]
 [ext_resource path="res://Gun_Top.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 30.0
 
 [node name="Gun" type="Node2D" index="0"]
 
@@ -74,6 +84,28 @@ area_mask = 1
 position = Vector2( 0, -177 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="Area2D" type="Area2D" parent="." index="8"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( 0.499999, -86.895 )
+scale = Vector2( 1.76923, 8.69231 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" index="1"]
+
+shape = SubResource( 2 )
+
 [connection signal="timeout" from="Reload" to="." method="on_reload"]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 

@@ -66,3 +66,8 @@ func _on_Spawn_timeout():
 	spawn_comet(comet_mass, position_vector, velocity_vector)
 	$Spawn.wait_time = rand_range(comet_spawn_time_minimum, comet_spawn_time_maximum)
 	$Spawn.start()
+
+
+func _on_Ground_body_entered(body):
+	if body.is_in_group("Comet"):
+		body.hit_by_ground()

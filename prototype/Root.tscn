@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Gun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://City.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ground.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 600, 20 )
 
 [node name="Root" type="Node2D" index="0"]
 
@@ -12,16 +18,16 @@ comet_scene = ExtResource( 2 )
 
 [node name="Gun" parent="." index="0" instance=ExtResource( 3 )]
 
-position = Vector2( 508.587, 593.474 )
+position = Vector2( 508.587, 587.474 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="City" parent="." index="1" instance=ExtResource( 4 )]
 
-position = Vector2( 301.385, 555.125 )
+position = Vector2( 301.385, 545.125 )
 
 [node name="City2" parent="." index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 777.839, 554.017 )
+position = Vector2( 777.839, 546.017 )
 
 [node name="Spawn" type="Timer" parent="." index="3"]
 
@@ -30,6 +36,28 @@ wait_time = 1.0
 one_shot = true
 autostart = true
 
+[node name="Ground" type="Area2D" parent="." index="4"]
+
+position = Vector2( 512, 609 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Ground" index="0"]
+
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" index="1"]
+
+shape = SubResource( 1 )
+
 [connection signal="timeout" from="Spawn" to="." method="_on_Spawn_timeout"]
+
+[connection signal="body_entered" from="Ground" to="." method="_on_Ground_body_entered"]
 
 

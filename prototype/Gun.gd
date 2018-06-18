@@ -6,6 +6,7 @@ var overheat_level = 0.0
 var heat_level = 0.0
 var heat_gain_rate = 2
 var heat_loss_rate = 4
+var heat_loss_per_comet_mass = .01
 var firing = false
 var shot_loaded = true
 var heat_indicator_level = 0
@@ -37,7 +38,7 @@ func firing(delta):
 	heat_gain(delta)
 	
 func cooling(delta):
-	heat_loss(delta)
+	cooldown_heat_loss(delta)
 
 func on_reload():
 	shot_loaded = true
@@ -53,8 +54,12 @@ func heat_gain(delta):
 	update_heat_indicator_level()
 	update_overheat_display()
 	
-func heat_loss(delta):
+func cooldown_heat_loss(delta):
 	var removed_heat = heat_loss_rate * delta
+	heat_loss(removed_heat)
+	
+func heat_loss(removed_heat):
+	
 	overheat_level -= removed_heat
 	if overheat_level < 0:
 		heat_level += overheat_level
@@ -127,3 +132,10 @@ func turn(delta):
 		if rotationMax < turnDelta:
 			turnDelta = rotationMax
 		rotation_degrees = currentAngle + (turnDelta * turnDirection)
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("Comet"):
+		var comet_mass = body.mass
+		heat_loss(comet_mass * heat_loss_per_comet_mass)
+		body.hit_by_gun()
+	
