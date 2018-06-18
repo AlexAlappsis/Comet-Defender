@@ -15,7 +15,7 @@ var comet_maximum_x = 200
 var comet_spawn_time_minimum = .8
 var comet_spawn_time_maximum = 1.8
 var comet_spawn_time_reduction_per_thousand_score = .2
-var standing_buildings = 6
+var standing_buildings = 12
 var score_per_second = 5
 var score_multiplier_per_building = .5
 

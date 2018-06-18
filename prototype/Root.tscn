@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Gun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://City.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Ground.png" type="Texture" id=5]
-[ext_resource path="res://Lato-Black.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://City2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://City3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://City4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Ground.png" type="Texture" id=8]
+[ext_resource path="res://Lato-Black.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,7 +20,7 @@ extents = Vector2( 600, 20 )
 size = 30
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -25,7 +28,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 20
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Root" type="Node2D" index="0"]
@@ -41,20 +44,28 @@ turnRateAnglePerSecond = 160.0
 
 [node name="City" parent="." index="1" instance=ExtResource( 4 )]
 
-position = Vector2( 301.385, 545.125 )
+position = Vector2( 131.384, 545.125 )
 
-[node name="City2" parent="." index="2" instance=ExtResource( 4 )]
+[node name="City2" parent="." index="2" instance=ExtResource( 5 )]
 
-position = Vector2( 777.839, 546.017 )
+position = Vector2( 376.001, 547.002 )
 
-[node name="Spawn" type="Timer" parent="." index="3"]
+[node name="City3" parent="." index="3" instance=ExtResource( 6 )]
+
+position = Vector2( 673.002, 546.002 )
+
+[node name="City4" parent="." index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 925.003, 545.002 )
+
+[node name="Spawn" type="Timer" parent="." index="5"]
 
 process_mode = 1
 wait_time = 1.5
 one_shot = true
 autostart = true
 
-[node name="Ground" type="Area2D" parent="." index="4"]
+[node name="Ground" type="Area2D" parent="." index="6"]
 
 position = Vector2( 512, 609 )
 input_pickable = true
@@ -68,13 +79,13 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Ground" index="0"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" index="1"]
 
 shape = SubResource( 1 )
 
-[node name="Score_UI" type="Container" parent="." index="5"]
+[node name="Score_UI" type="Container" parent="." index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -172,8 +183,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "custom_fonts" ]
 
 [connection signal="building_destroyed" from="City" to="." method="_on_City_building_destroyed"]
-
-[connection signal="building_destroyed" from="City2" to="." method="_on_City_building_destroyed"]
 
 [connection signal="timeout" from="Spawn" to="." method="_on_Spawn_timeout"]
 
