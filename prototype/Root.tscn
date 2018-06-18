@@ -233,10 +233,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 13.0
-margin_top = 35.0
-margin_right = 140.0
-margin_bottom = 114.0
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 138.0
+margin_bottom = 89.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -439,6 +439,89 @@ group = null
 text = "Help"
 flat = false
 align = 1
+
+[node name="Help" type="AcceptDialog" parent="." index="10"]
+
+pause_mode = 2
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 83.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Help"
+resizable = false
+dialog_hide_on_ok = true
+_sections_unfolded = [ "Dialog", "Pause" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Help" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 75.0
+margin_bottom = 22.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = "Welcome to Comet Defender
+
+Defend the city from falling comets with your plasma cannon.
+
+The plasma will melt and deflect the comets.
+
+Use mouse to aim, left click to shoot.
+
+The cannon will heat up with constant use.  If it over heats, it will shut down until it's cooled off.
+
+The hotter the cannon, the hotter and more effective the plasma will be.
+
+If the cannon is hit by a comet, it will cool down rapidly.  It will not be damaged.
+
+Credits: 
+	Created by: Alex M (Alappsis)
+	Help by Jeremy A and Scott H"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Welcome to Comet Defender
+
+Defend the city from falling comets with your plasma cannon.
+
+The plasma will melt and deflect the comets.
+
+Use mouse to aim, left click to shoot.
+
+The cannon will heat up with constant use.  If it over heats, it will shut down until it's cooled off.
+
+The hotter the cannon, the hotter and more effective the plasma will be.
+
+If the cannon is hit by a comet, it will cool down rapidly.  It will not be damaged.
+
+Credits: 
+	Created by: Alex M (Alappsis)
+	Help by Jeremy A and Scott H"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
 
 [connection signal="building_destroyed" from="City" to="." method="_on_City_building_destroyed"]
 

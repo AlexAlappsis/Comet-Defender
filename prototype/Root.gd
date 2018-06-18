@@ -110,7 +110,7 @@ func _on_Restart_pressed():
 	get_tree().reload_current_scene()
 
 func _on_Help_pressed():
-	pass # replace with function body
+	$Help.popup_centered(Vector2(500, 400))
 
 func _on_Start_pressed():
 	$Game_Start_Popup.hide()
