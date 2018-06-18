@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://Comet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Gun.tscn" type="PackedScene" id=3]
-[ext_resource path="res://City.tscn" type="PackedScene" id=4]
-[ext_resource path="res://City2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://City3.tscn" type="PackedScene" id=6]
-[ext_resource path="res://City4.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Ground.png" type="Texture" id=8]
-[ext_resource path="res://Lato-Black.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Background.png" type="Texture" id=3]
+[ext_resource path="res://Gun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://City.tscn" type="PackedScene" id=5]
+[ext_resource path="res://City2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://City3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://City4.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Ground.png" type="Texture" id=9]
+[ext_resource path="res://Lato-Black.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -20,7 +21,7 @@ extents = Vector2( 600, 20 )
 size = 30
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -28,7 +29,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 20
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -36,7 +37,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 25
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Root" type="Node2D" index="0"]
@@ -44,37 +45,44 @@ _sections_unfolded = [ "Font", "Settings" ]
 script = ExtResource( 1 )
 comet_scene = ExtResource( 2 )
 
-[node name="Gun" parent="." index="0" instance=ExtResource( 3 )]
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+z_index = -5
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Offset", "Z Index" ]
+
+[node name="Gun" parent="." index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 508.587, 587.474 )
 scale = Vector2( 0.5, 0.5 )
 z_index = -1
 turnRateAnglePerSecond = 190.0
 
-[node name="City" parent="." index="1" instance=ExtResource( 4 )]
+[node name="City" parent="." index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 131.384, 545.125 )
 
-[node name="City2" parent="." index="2" instance=ExtResource( 5 )]
+[node name="City2" parent="." index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 376.001, 547.002 )
 
-[node name="City3" parent="." index="3" instance=ExtResource( 6 )]
+[node name="City3" parent="." index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 673.002, 546.002 )
 
-[node name="City4" parent="." index="4" instance=ExtResource( 7 )]
+[node name="City4" parent="." index="5" instance=ExtResource( 8 )]
 
 position = Vector2( 925.003, 545.002 )
 
-[node name="Spawn" type="Timer" parent="." index="5"]
+[node name="Spawn" type="Timer" parent="." index="6"]
 
 process_mode = 1
 wait_time = 1.5
 one_shot = true
 autostart = true
 
-[node name="Ground" type="Area2D" parent="." index="6"]
+[node name="Ground" type="Area2D" parent="." index="7"]
 
 editor/display_folded = true
 position = Vector2( 512, 609 )
@@ -89,13 +97,13 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Ground" index="0"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" index="1"]
 
 shape = SubResource( 1 )
 
-[node name="Score_UI" type="Container" parent="." index="7"]
+[node name="Score_UI" type="Container" parent="." index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -193,7 +201,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Material" ]
 
-[node name="Game_Over_Popup" type="PopupDialog" parent="." index="8"]
+[node name="Game_Over_Popup" type="PopupDialog" parent="." index="9"]
 
 pause_mode = 2
 visible = false
@@ -336,7 +344,7 @@ text = "Help"
 flat = false
 align = 1
 
-[node name="Game_Start_Popup" type="PopupDialog" parent="." index="9"]
+[node name="Game_Start_Popup" type="PopupDialog" parent="." index="10"]
 
 pause_mode = 2
 editor/display_folded = true
@@ -462,7 +470,7 @@ text = "Help"
 flat = false
 align = 1
 
-[node name="Help" type="AcceptDialog" parent="." index="10"]
+[node name="Help" type="AcceptDialog" parent="." index="11"]
 
 pause_mode = 2
 visible = false
