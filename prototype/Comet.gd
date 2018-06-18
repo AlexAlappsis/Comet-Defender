@@ -52,8 +52,7 @@ func create_comet_trail():
 	
 func leave_comet_trail():
 	if current_comet_trail != null:
-		current_comet_trail.start_kill_countdown()
-		current_comet_trail.emitting = false
+		current_comet_trail.get_left_behind()
 		current_comet_trail = null
 
 func update_mass(new_mass):

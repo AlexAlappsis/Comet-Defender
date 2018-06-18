@@ -12,8 +12,8 @@ var comet_minimum_starting_velocity = 20
 var comet_maximum_starting_velocity = 200
 var comet_minimum_x = -200
 var comet_maximum_x = 200
-var comet_spawn_time_minimum = .3
-var comet_spawn_time_maximum = 1
+var comet_spawn_time_minimum = .8
+var comet_spawn_time_maximum = 1.8
 
 
 func _ready():

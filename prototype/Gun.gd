@@ -15,7 +15,7 @@ var targetAngle = 0
 
 export (PackedScene) var shot_scene
 export (Color) var gun_base_color
-export (float) var turnRateAnglePerSecond = 50
+export (float) var turnRateAnglePerSecond
 export (int) var SCREEN_WIDTH
 
 func _ready():
