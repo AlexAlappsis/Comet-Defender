@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Comet.gd" type="Script" id=1]
+[ext_resource path="res://Comet_Trail.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -38,6 +39,8 @@ mass_loss_per_plasma_hit = 20.0
 mass_loss_extra_per_plasma_heat = 5.0
 minimum_mass = 100.0
 density_calculation_value = 18.0
+partical_density_per_mass = 0.5
+comet_trail_scene = ExtResource( 2 )
 SCREEN_HEIGHT = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
