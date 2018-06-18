@@ -11,10 +11,6 @@ export (int) var SCREEN_HEIGHT
 var size
 var densityCalculationValue = 10
 
-func _ready():
-	
-	pass
-	
 func _draw():
 	draw_circle(Vector2(0.0, 0.0), size, color)
 	
@@ -22,12 +18,23 @@ func _physics_process(delta):
 	if position.y > SCREEN_HEIGHT + 200:
 		queue_free()
 
+func set_initial_mass(new_mass):
+	mass = new_mass
+	size = mass / densityCalculationValue
+	var shape = CircleShape2D.new()
+	shape.set_radius(size)
+	shape_owner_clear_shapes(0)
+	shape_owner_add_shape(0, shape)
+	$"CollisionShape2D".set_shape(shape)
+
 func update_mass(new_mass):
 	if new_mass < minimum_mass:
 		queue_free()
 	else:
 		mass = new_mass
 		size = mass / densityCalculationValue
+		var shape = shape_owner_get_shape(0, 0)
+		shape.set_radius(size)
 		$CollisionShape2D.shape.radius = size
 		update()
 	

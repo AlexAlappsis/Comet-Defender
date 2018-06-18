@@ -50,7 +50,7 @@ func calculateTurretAngle():
 func spawn_comet(mass, position_vector, velocity_vector):
 	var new_comet = comet_scene.instance()
 	new_comet.position = position_vector
-	new_comet.update_mass(mass)
+	new_comet.set_initial_mass(mass)
 	new_comet.apply_impulse(Vector2(0.0, 0.0), velocity_vector)
 	new_comet.SCREEN_HEIGHT = SCREEN_HEIGHT
 	add_child(new_comet)
