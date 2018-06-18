@@ -112,6 +112,7 @@ func spawn_shot():
 	newshot.position = $Shot_Spawn.get_global_transform().get_origin()
 	newshot.scale = scale
 	newshot.SCREEN_WIDTH = SCREEN_WIDTH
+	newshot.heat = max(1.0, heat_level)
 	get_parent().add_child(newshot)
 
 func target_angle_set(value):

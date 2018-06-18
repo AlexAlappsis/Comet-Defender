@@ -54,9 +54,11 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 speed = 400
 heat = 1
+SCREEN_WIDTH = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
+visible = false
 position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
@@ -66,7 +68,7 @@ visible = false
 texture = ExtResource( 2 )
 hframes = 6
 frame = 4
-_sections_unfolded = [ "Animation", "Offset" ]
+_sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
@@ -80,9 +82,10 @@ blend_times = [  ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 
+modulate = Color( 0.901961, 0.607843, 0.607843, 1 )
 frames = SubResource( 3 )
 animation = "default"
-frame = 4
 playing = true
+_sections_unfolded = [ "Visibility" ]
 
 

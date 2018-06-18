@@ -5,7 +5,9 @@ export (float) var heat = 1
 export (int) var SCREEN_WIDTH
 
 func _ready():
-	pass
+	var color_red_mod = 230 + ((heat - 1) * 5)
+	var color_blue_green_mod = 155 + ((heat - 1) * 20)
+	$AnimatedSprite.modulate = Color(color_red_mod / 255, color_blue_green_mod / 255, color_blue_green_mod / 255, 1.0)
 	
 func _physics_process(delta):
 	var movementVector = Vector2(0.0, -speed * delta).rotated(rotation)
