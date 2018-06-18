@@ -30,6 +30,10 @@ func _ready():
 	$Gun.SCREEN_WIDTH = SCREEN_WIDTH
 	comet_maximum_x += SCREEN_WIDTH
 	randomize()
+	if get_tree().paused:
+		get_tree().paused = false
+	else:
+		game_start()
 
 func _process(delta):
 	var score_multiplier = max(1, standing_buildings / float(max_standing_buildings) * max_score_multiplier)
@@ -95,4 +99,19 @@ func _on_City_building_destroyed():
 		game_over()
 		
 func game_over():
-	pass
+	$Game_Over_Popup.popup_centered(Vector2(150, 100))
+	get_tree().paused = true
+	
+func game_start():
+	$Game_Start_Popup.popup_centered(Vector2(200, 100))
+	get_tree().paused = true
+
+func _on_Restart_pressed():
+	get_tree().reload_current_scene()
+
+func _on_Help_pressed():
+	pass # replace with function body
+
+func _on_Start_pressed():
+	$Game_Start_Popup.hide()
+	get_tree().paused = false

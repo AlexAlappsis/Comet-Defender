@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://City.gd" type="Script" id=1]
+[ext_resource path="res://Building3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Building4.tscn" type="PackedScene" id=3]
+
+[node name="City" type="Area2D" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+
+[node name="Building3" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( -1.35838, 6.75264 )
+
+[node name="Building4" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( -41.52, 26.1328 )
+
+[node name="Building5" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 37.3382, 26.6134 )
+
+[connection signal="body_shape_entered" from="." to="." method="_on_City_body_shape_entered"]
+
+
