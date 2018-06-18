@@ -16,8 +16,9 @@ var comet_spawn_time_minimum = .8
 var comet_spawn_time_maximum = 1.8
 var comet_spawn_time_reduction_per_thousand_score = .2
 var standing_buildings = 12
-var score_per_second = 5
-var score_multiplier_per_building = .5
+var max_standing_buildings = 12
+var score_per_second = 10
+var max_score_multiplier = 10
 
 var score = 0
 
@@ -31,7 +32,8 @@ func _ready():
 	randomize()
 
 func _process(delta):
-	score += score_per_second * (standing_buildings * score_multiplier_per_building) * delta
+	var score_multiplier = max(1, standing_buildings / float(max_standing_buildings) * max_score_multiplier)
+	score += score_per_second * score_multiplier * delta
 	$Score_UI/HBoxContainer/MarginContainer/Score.text = str(floor(score))
 
 func _physics_process(delta):
