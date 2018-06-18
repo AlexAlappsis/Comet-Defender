@@ -46,12 +46,13 @@ animations = [ {
 "Plasma",
 ]]
 
+z_index = -2
 input_pickable = false
 collision_layer = 1
 collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform" ]
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 speed = 400
 heat = 1
 SCREEN_WIDTH = null
@@ -85,6 +86,7 @@ blend_times = [  ]
 modulate = Color( 0.901961, 0.607843, 0.607843, 1 )
 frames = SubResource( 3 )
 animation = "default"
+frame = 5
 playing = true
 _sections_unfolded = [ "Visibility" ]
 
