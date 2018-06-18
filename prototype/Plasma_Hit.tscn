@@ -46,7 +46,6 @@ _sections_unfolded = [ "Angle", "Emission Shape", "Initial Velocity", "Spread" ]
 [node name="Plasma_Hit" type="Particles2D" index="0"]
 
 modulate = Color( 1, 0.868622, 0.589844, 1 )
-z_index = 2
 emitting = false
 amount = 100
 lifetime = 0.3

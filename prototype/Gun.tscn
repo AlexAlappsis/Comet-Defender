@@ -29,7 +29,7 @@ radius = 30.0
 [node name="Gun" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 shot_scene = ExtResource( 2 )
 gun_base_color = Color( 0.364706, 0.364706, 0.364706, 1 )
 turnRateAnglePerSecond = null
@@ -56,7 +56,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 self_modulate = Color( 0.364706, 0.364706, 0.364706, 1 )
 position = Vector2( 0, -90 )
-z_index = 1
+z_index = 2
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
@@ -116,102 +116,124 @@ shape = SubResource( 2 )
 
 [node name="Heat_Level_0" type="AudioStreamPlayer" parent="." index="9"]
 
+pause_mode = 1
 stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 0.9
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Heat_Level_1" type="AudioStreamPlayer" parent="." index="10"]
 
+pause_mode = 1
 stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Heat_Level_2" type="AudioStreamPlayer" parent="." index="11"]
 
+pause_mode = 1
 stream = ExtResource( 7 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Heat_Level_3" type="AudioStreamPlayer" parent="." index="12"]
 
+pause_mode = 1
 stream = ExtResource( 8 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Heat_Level_4" type="AudioStreamPlayer" parent="." index="13"]
 
+pause_mode = 1
 stream = ExtResource( 9 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Heat_Level_5" type="AudioStreamPlayer" parent="." index="14"]
 
+pause_mode = 1
 stream = ExtResource( 10 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Heat_Level_6" type="AudioStreamPlayer" parent="." index="15"]
 
+pause_mode = 1
 stream = ExtResource( 11 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Overheat" type="AudioStreamPlayer" parent="." index="16"]
 
+pause_mode = 1
 stream = ExtResource( 12 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Shutdown" type="AudioStreamPlayer" parent="." index="17"]
 
+pause_mode = 1
 stream = ExtResource( 13 )
 volume_db = -12.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Startup" type="AudioStreamPlayer" parent="." index="18"]
 
+pause_mode = 1
 stream = ExtResource( 14 )
 volume_db = -12.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="Fire" type="AudioStreamPlayer" parent="." index="19"]
 
+pause_mode = 1
 stream = ExtResource( 15 )
 volume_db = -20.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="timeout" from="Reload" to="." method="on_reload"]
 

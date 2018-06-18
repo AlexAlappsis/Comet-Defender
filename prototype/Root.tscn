@@ -48,6 +48,7 @@ comet_scene = ExtResource( 2 )
 
 position = Vector2( 508.587, 587.474 )
 scale = Vector2( 0.5, 0.5 )
+z_index = -1
 turnRateAnglePerSecond = 190.0
 
 [node name="City" parent="." index="1" instance=ExtResource( 4 )]
@@ -96,7 +97,6 @@ shape = SubResource( 1 )
 
 [node name="Score_UI" type="Container" parent="." index="7"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -109,6 +109,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Score_UI" index="0"]
 
@@ -190,12 +191,11 @@ valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Material" ]
 
 [node name="Game_Over_Popup" type="PopupDialog" parent="." index="8"]
 
 pause_mode = 2
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -210,7 +210,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = true
-_sections_unfolded = [ "Anchor", "Pause", "Popup" ]
+_sections_unfolded = [ "Anchor", "Material", "Pause", "Popup", "Visibility" ]
 
 [node name="CenterContainer" type="CenterContainer" parent="Game_Over_Popup" index="0"]
 
@@ -237,9 +237,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 11.0
-margin_top = 10.0
+margin_top = 1.0
 margin_right = 138.0
-margin_bottom = 89.0
+margin_bottom = 98.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -270,7 +270,25 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Restart" type="Button" parent="Game_Over_Popup/CenterContainer/VBoxContainer" index="1"]
+[node name="Score" type="Label" parent="Game_Over_Popup/CenterContainer/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Restart" type="Button" parent="Game_Over_Popup/CenterContainer/VBoxContainer" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -294,7 +312,7 @@ text = "Restart"
 flat = false
 align = 1
 
-[node name="Help" type="Button" parent="Game_Over_Popup/CenterContainer/VBoxContainer" index="2"]
+[node name="Help" type="Button" parent="Game_Over_Popup/CenterContainer/VBoxContainer" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0

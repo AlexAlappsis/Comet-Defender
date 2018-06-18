@@ -46,7 +46,6 @@ _sections_unfolded = [ "Angular Velocity", "Emission Shape", "Initial Velocity",
 
 [node name="Comet_Explosion" type="Particles2D" index="0"]
 
-z_index = 2
 emitting = false
 amount = 50
 lifetime = 0.3

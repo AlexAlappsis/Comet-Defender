@@ -100,6 +100,7 @@ func _on_City_building_destroyed():
 		
 func game_over():
 	$Game_Over_Popup.popup_centered(Vector2(150, 100))
+	$Game_Over_Popup/CenterContainer/VBoxContainer/Score.text = "Final Score: "+str(floor(score))	
 	get_tree().paused = true
 	
 func game_start():
