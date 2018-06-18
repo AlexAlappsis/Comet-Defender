@@ -45,6 +45,7 @@ _sections_unfolded = [ "Angular Velocity", "Emission Shape", "Gravity", "Initial
 
 [node name="Comet_Trail" type="Particles2D" index="0"]
 
+z_index = 2
 emitting = true
 amount = 100
 lifetime = 0.4
@@ -64,7 +65,7 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 script = ExtResource( 2 )
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time" ]
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Z Index" ]
 
 [node name="Kill_Timer" type="Timer" parent="." index="0"]
 

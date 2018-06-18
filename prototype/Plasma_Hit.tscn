@@ -46,6 +46,7 @@ _sections_unfolded = [ "Angle", "Emission Shape", "Initial Velocity", "Spread" ]
 [node name="Plasma_Hit" type="Particles2D" index="0"]
 
 modulate = Color( 1, 0.868622, 0.589844, 1 )
+z_index = 2
 emitting = false
 amount = 100
 lifetime = 0.3
@@ -65,6 +66,6 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 script = ExtResource( 2 )
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Visibility" ]
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Visibility", "Z Index" ]
 
 
