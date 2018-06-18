@@ -15,6 +15,7 @@ export (int) var SCREEN_HEIGHT
 
 var size
 var current_comet_trail
+var exploding = false
 
 func _ready():
 	create_comet_trail()
@@ -42,6 +43,7 @@ func set_initial_mass(new_mass):
 	$"CollisionShape2D".set_shape(shape)
 
 func create_comet_trail():
+	if exploding: return
 	var comet_trail = comet_trail_scene.instance()
 	comet_trail.process_material = comet_trail.process_material.duplicate(true)
 	comet_trail.amount = partical_density_per_mass * mass
@@ -93,6 +95,7 @@ func too_small():
 	explode()
 
 func explode():
+	exploding = true
 	leave_comet_trail()
 	var comet_explosion = comet_explosion_scene.instance()
 	comet_explosion.process_material = comet_explosion.process_material.duplicate(true)

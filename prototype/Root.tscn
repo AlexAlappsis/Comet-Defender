@@ -193,6 +193,7 @@ _sections_unfolded = [ "Anchor", "custom_fonts" ]
 [node name="Game_Over_Popup" type="PopupDialog" parent="." index="8"]
 
 pause_mode = 2
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -317,6 +318,7 @@ align = 1
 [node name="Game_Start_Popup" type="PopupDialog" parent="." index="9"]
 
 pause_mode = 2
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
