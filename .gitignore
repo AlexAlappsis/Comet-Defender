@@ -1,1 +1,9 @@
+# Build output directories
+export/
 prototype/export
+
+# Godot imports and caches
+*.import
+*.stex
+*.md5
+*.sample
