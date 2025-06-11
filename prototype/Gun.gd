@@ -7,7 +7,7 @@ var heat_level = 0.0
 var heat_gain_rate = 2
 var heat_loss_rate = 4
 var heat_loss_per_comet_mass = .01
-var firing = false
+var is_firing = false
 var shot_loaded = true
 var heat_indicator_level = 0
 var shutdown = false
@@ -19,18 +19,18 @@ export (float) var turnRateAnglePerSecond
 export (int) var SCREEN_WIDTH
 
 func _ready():
-	#firing = true
+       #is_firing = true
 	pass
 	
 func _physics_process(delta):
-	if firing:
-		firing(delta)
+        if is_firing:
+                process_firing(delta)
 	else:
 		cooling(delta)
 	if targetAngle != null:
 		turn(delta)
 	
-func firing(delta):
+func process_firing(delta):
 	if shot_loaded == true:
 		spawn_shot()
 		shot_loaded = false
@@ -97,22 +97,22 @@ func update_overheat_display():
 		$Overheat.stop()
 
 func shutdown():
-	$Shutdown.play()
-	firing = false
-	shutdown = true
+        $Shutdown.play()
+        is_firing = false
+        shutdown = true
 
 func restart():
 	$Startup.play()
 	shutdown = false
 
 func start_firing():
-	if shutdown == false:
-		$Fire.play()
-		firing = true
+        if shutdown == false:
+                $Fire.play()
+                is_firing = true
 	
 func stop_firing():
-	$Fire.stop()
-	firing = false
+        $Fire.stop()
+        is_firing = false
 	
 func spawn_shot():
 	var newshot = shot_scene.instance()
